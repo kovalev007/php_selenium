@@ -32,18 +32,20 @@ class Video {
         $file2 = "preview_2";
         $file2_full = codecept_log_dir() . "debug" . DIRECTORY_SEPARATOR . "preview_2.png";
 
-        if (file_exists($file1_full)) {
-            unlink($file1_full);
-        }
-        if (file_exists($file2_full)) {
-            unlink($file2_full);
-        }
+        $this->deleteFile($file1_full);
+        $this->deleteFile($file2_full);
 
         $I->makeElementScreenshot($this->getVideoLocator($video_number), $file1);
         sleep(1);
         $I->makeElementScreenshot($this->getVideoLocator($video_number), $file2);
 
         $I->assertFileNotEquals($file1_full, $file2_full, "First and second preview equals.");
+    }
+
+    private function deleteFile($file) {
+        if (file_exists($file)) {
+            unlink($file);
+        }
     }
 
     private function getVideoLocator($video_number) : string {
