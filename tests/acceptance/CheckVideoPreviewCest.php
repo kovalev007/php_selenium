@@ -6,7 +6,15 @@ class CheckVideoPreviewCest {
 
     }
 
-    // tests
+    /**
+     * Original Scenario
+     * 
+     * 1) Open https://yandex.ru/video/
+     * 2) Search video by text "ураган"
+     * 3) Wait search results
+     * 4) Move mouse to any video on left panel
+     * 5) Check video has trailer
+     */
     public function tryToTest(AcceptanceTester $I, \Component\Search $search, \Component\Main $main, \Component\Video $video) {
         $I->amOnPage('/');
 
