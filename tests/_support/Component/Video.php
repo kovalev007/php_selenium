@@ -19,6 +19,11 @@ class Video {
         $I->waitForElementNotVisible($this->getVideoLoaderLocator($video_number));
     }
 
+    /**
+     * Gets two screenshots with between interval 1 sec and compare
+     * 
+     * TODO need think how we can provide test class name to prevent collisions with parallel execution of tests
+     */
     public function checkVideoTrailerExist($video_number) {
         $I = $this->tester;
 
